@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dragons Team</title>
+    <link rel="shortcut icon" href="./src/images/avatar.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --body-bg: #242424;
+            --header-bg: #242424;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: var(--body-bg);
+        }
+
+        header {
+            width: 100%;
+            height: 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 15;
+            padding: 0 1.2rem;
+            background-color: var(--header-bg);
+            box-shadow: 1px 0px 5px black;
+        }
+
+        .header-links {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .header-links a {
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            font-size: 0.6rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        #burger-menu-open {
+            font-size: 1.2rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        #header-avatar {
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+        }
+
+        #header-account {
+            font-size: 1.2rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        #burger-menu {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            background-color: #1a1a1a;
+            transform: translateX(-100%);
+            transition: transform 0.15s ease-in-out;
+        }
+
+        #burger-menu.active {
+            transform: translateX(0%);
+        }
+
+        .burger-menu-avatar {
+            width: 3rem;
+            height: 3rem;
+            position: absolute;
+            top: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #burger-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.2rem;
+            color: rgb(255, 255, 255);
+        }
+
+        .burger-menu-links {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .burger-menu-links a {
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            font-size: 1.4rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (min-width: 768px) {
+            html {
+                font-size: 20px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            html {
+                font-size: 22px;
+            }
+
+            header {
+                padding: 0 2.2rem;
+            }
+
+            .header-links {
+                display: flex;
+            }
+
+            #burger-menu-open {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <i class="fa-solid fa-bars" id="burger-menu-open"></i>
+        <nav class="header-links">
+            <a href="#">Главная</a>
+            <a href="#">Команда</a>
+            <a href="#">Связь с нами</a>
+        </nav>
+        <img src="./src/images/avatar.png" alt="avatar" id="header-avatar">
+        <i class="fa-solid fa-arrow-right-to-bracket" id="header-account"></i>
+    </header>
+
+    <div id="burger-menu">
+        <img src="./src/images/avatar.png" alt="avatar" class="burger-menu-avatar">
+        <i class="fa-solid fa-xmark" id="burger-menu-close"></i>
+        <nav class="burger-menu-links">
+            <a href="#">Главная</a>
+            <a href="#">Команда</a>
+            <a href="#">Связь с нами</a>
+        </nav>
+    </div>
+
+    <script>
+        const burgeropenbtn = document.getElementById('burger-menu-open');
+        const burgerclosebtn = document.getElementById('burger-menu-close');
+        const burgermenu = document.getElementById('burger-menu');
+
+        burgeropenbtn.addEventListener('click', () => {
+            burgermenu.classList.add('active');
+        });
+
+        burgerclosebtn.addEventListener('click', () => {
+            burgermenu.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
